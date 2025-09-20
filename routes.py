@@ -67,3 +67,14 @@ def init_routes(app):
         new_password = data.get("new_password")
         user_id = int(get_jwt_identity())
         user = User.query.get(user_id)
+
+        if not old_password or not new_password:
+            return jsonify({"error": "Old and new passwords are required"}), 400
+        
+        if not bcrypt.check_password_hash(user.password, old_password):
+            return jsonify({"error": "Password did not match!"}), 401
+        
+        user.password = bcrypt.generate_password_hash(new_password).decode("utf-8")
+        db.session.commit()
+
+        return jsonify({"message": "Password updated successfully!"}), 200
