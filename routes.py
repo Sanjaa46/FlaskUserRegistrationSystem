@@ -78,3 +78,24 @@ def init_routes(app):
         db.session.commit()
 
         return jsonify({"message": "Password updated successfully!"}), 200
+    
+    # Delete account endpoint
+    @app.route("/profile", methods=["DELETE"])
+    @jwt_required()
+    def delete_account():
+        data = request.get_json()
+        password = data.get("password")
+        user_id = int(get_jwt_identity())
+        user = User.query.get(user_id)
+        
+
+        if not password:
+            return jsonify({"error": "Password is required"}), 400
+        
+        if not bcrypt.check_password_hash(user.password, password):
+            return jsonify({"error": "Password did not match!"}), 401
+        
+        db.session.delete(user)
+        db.session.commit()
+
+        return jsonify({"message": "Account deleted successfully!"}), 200
