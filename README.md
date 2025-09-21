@@ -57,15 +57,5 @@ docker-compose up --build
 - PUT /profile/password → Change password (JWT required)
 - DELETE /profile → Delete account (JWT required)
 
-## Project Structure
 
-flask-user-system/
-│
-├── app.py # Main application entry point
-├── config.py # Database configurations
-├── models.py # Database models
-├── routes.py # API endpoints
-├── requirements.txt 
-├── Dockerfile 
-└── docker-compose.yml
 
