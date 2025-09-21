@@ -1,0 +1,4 @@
+class Config:
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://<USER>:<PASSWORD>@<HOST>:<PORT>/<DB_NAME>'
+    SECRET_KEY = '<YOUR_SECRET_KEY>'
+    JWT_SECRET_KEY = '<YOUR_JWT_SECRET_KEY>'

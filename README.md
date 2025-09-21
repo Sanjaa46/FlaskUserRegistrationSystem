@@ -36,6 +36,14 @@ CREATE DATABASE user_db;
 ```
 ### 4.Update config.py with your database credentials
 
+## Configuration
+
+1. Copy `config.py.example` to `config.py`:
+
+```bash
+cp config.py.example config.py
+```
+
 ## Running the App
 ### Without Docker
 ```bash
@@ -56,6 +64,3 @@ docker-compose up --build
 - GET /profile → Get user profile (JWT required)
 - PUT /profile/password → Change password (JWT required)
 - DELETE /profile → Delete account (JWT required)
-
-
-
